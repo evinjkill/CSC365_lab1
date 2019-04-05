@@ -43,7 +43,7 @@ def main_loop(students):
         elif(len(option) < 2):
             print("Command requires arguments\n")
         elif(command == "S" or command == "Student"):
-            find_students(students, options)
+            find_students(students, option)
         elif(command == "T" or command == "Teacher"):
             search_teacher(students, option[1])
         elif(command == "B" or command == "Bus"):
@@ -79,7 +79,7 @@ def search_bus(students, bus):
 def find_students(students, options):
     if len(options) == 3:
     #R5: S[tudent] <lastname> B[us]
-        if options[2] == "B" || options[2] == "Bus":
+        if options[2] == "B" or options[2] == "Bus":
             last_name = options[1]
             for student in students:
                 if last_name == student.last:
@@ -88,9 +88,9 @@ def find_students(students, options):
     #R4: S[tudent]: <lastname>
     elif len(options) == 2:
         last_name = options[1]
-            for student in students:
-                if last_name == student.last:
-                    print(student.last_name + ", " + student.firstname + ", " + student.grade + ", " + student.classroom + ", " +
+        for student in students:
+            if last_name == student.last:
+                print(student.last + ", " + student.first + ", " + student.grade + ", " + student.classroom + ", " +
                           student.t_last + ", " + student.t_first)
     else:
         pass
