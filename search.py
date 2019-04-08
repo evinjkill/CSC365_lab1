@@ -33,31 +33,33 @@ def main_loop(students):
     while(True):
         option = input("Option: ")
         option = option.split()
-        
-        command = option[0]
+        if len(option) > 0:
+            command = option[0]
+        else:
+            command = "INVALID"
         # Check commands with no arguments first 
-        if(command == "I" or command == "Info"):
-            pass
-        elif(command == "Q" or command == "Quit"):
+        if command == "I" or command == "Info":
+            print_info(students)
+        elif command == "Q" or command == "Quit":
             break
-        elif(len(option) < 2):
+        elif len(option) < 2 and command != "INVALID":
             print("Command requires arguments\n")
-        elif(command == "S" or command == "Student"):
+        elif command == "S" or command == "Student":
             find_students(students, option)
-        elif(command == "T" or command == "Teacher"):
+        elif command == "T" or command == "Teacher":
             search_teacher(students, option[1])
-        elif(command == "B" or command == "Bus"):
+        elif command == "B" or command == "Bus":
             search_bus(students, option[1])
-        elif(command == "G" or command == "Grade"):
+        elif command == "G" or command == "Grade":
             low = False
             high = False
-            if(len(option) > 2):
-                if(option[2] == "H" or option[2] == "High"):
+            if len(option) > 2:
+                if option[2] == "H" or option[2] == "High":
                     high = True
-                elif(option[2] == "L" or option[2] == "Low"):
+                elif option[2] == "L" or option[2] == "Low":
                     low = True
             search_grade(students, option[1], low, high)
-        elif(command == "A" or command == "Average"):
+        elif command == "A" or command == "Average":
             pass
         
         else:
@@ -142,6 +144,15 @@ def find_students(students, options):
         # invalid input
 
         
+def print_info(students):
+    for x in range(7):
+        count = 0
+        for student in students:
+            if int(student.grade) == x:
+                count += 1
+        print("Grade " + str(x) + ": " + str(count) + " Students")
+        
+
         
         
 if __name__ == "__main__":
