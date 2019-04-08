@@ -60,7 +60,7 @@ def main_loop(students):
                     low = True
             search_grade(students, option[1], low, high)
         elif command == "A" or command == "Average":
-            pass
+            average_gpa(students, option[1])
         
         else:
             pass
