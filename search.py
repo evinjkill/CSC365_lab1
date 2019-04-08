@@ -152,8 +152,20 @@ def print_info(students):
                 count += 1
         print("Grade " + str(x) + ": " + str(count) + " Students")
         
-
-        
+#R10 A[verage] <Number>
+def average_gpa(students, grade):
+   gpa_sum = 0
+   gpa_avg = 0
+   size = 0
+   
+   for student in students:
+      if student.grade == grade:
+         size += 1
+         gpa_sum += float(student.gpa)
+   
+   if size > 0:
+      gpa_avg = gpa_sum / size
+   print("   grade level: " + str(grade) + "\n   gpa average: " + str(gpa_avg))
         
 if __name__ == "__main__":
     main()
