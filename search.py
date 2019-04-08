@@ -49,7 +49,14 @@ def main_loop(students):
         elif(command == "B" or command == "Bus"):
             search_bus(students, option[1])
         elif(command == "G" or command == "Grade"):
-            search_grade(students, option[1])
+            low = False
+            high = False
+            if(len(option) > 2):
+                if(option[2] == "H" or option[2] == "High"):
+                    high = True
+                elif(option[2] == "L" or option[2] == "Low"):
+                    low = True
+            search_grade(students, option[1], low, high)
         elif(command == "A" or command == "Average"):
             pass
         
@@ -64,11 +71,49 @@ def search_teacher(students, lastname):
         if(student.t_last == lastname):
             print("   " + student.last + "," + student.first)
     
-def search_grade(students, grade):
-    print("Students in grade level " + grade)
-    for student in students:
-        if student.grade == grade:
-            print("   " + student.last + "," + student.first)
+def search_grade(students, grade, low, high):
+    s_first = ""
+    s_last = ""
+    min_gpa = 5.0
+    max_gpa = -1.0
+    s_bus = ""
+    t_first = ""
+    t_last = ""
+    
+    if high == False and low == False:
+        print("Students in grade level " + grade)
+        for student in students:
+            if student.grade == grade:
+                print("   " + student.last + "," + student.first)
+        
+    elif low == True:
+        print("Student with lowest gpa in grade level " + grade)
+        for student in students:
+            if student.grade == grade and float(student.gpa) < min_gpa:
+                s_first = student.first
+                s_last = student.last
+                min_gpa = float(student.gpa)
+                s_bus = student.bus
+                t_first = student.t_first
+                t_last = student.t_last
+                
+        print("   " + s_last + "," + s_first + "," + str(min_gpa) + "," + t_last + "," + t_first + "," + s_bus)
+        
+    else:
+        print("Student with highest gpa in grade level " + grade)
+        for student in students:
+            if student.grade == grade and float(student.gpa) > max_gpa:
+                s_first = student.first
+                s_last = student.last
+                max_gpa = float(student.gpa)
+                s_bus = student.bus
+                t_first = student.t_first
+                t_last = student.t_last
+                
+        print("   " + s_last + "," + s_first + "," + str(max_gpa) + "," + t_last + "," + t_first + "," + s_bus)
+                
+            
+        
             
 def search_bus(students, bus):
     print("Students who take bus " + bus)
@@ -95,6 +140,9 @@ def find_students(students, options):
     else:
         pass
         # invalid input
+
+        
+        
         
 if __name__ == "__main__":
     main()
