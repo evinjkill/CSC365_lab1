@@ -13,6 +13,7 @@ def create_students(file):
     for student_line in students_file:
         student = student_line.split(",")
         student_obj = Student(student[0], student[1], student[2], student[3], student[4], student[5], student[6], student[7])
+        student_obj.t_first = student_obj.t_first.replace('\n', '')
         students.append(student_obj)
         
     return students
