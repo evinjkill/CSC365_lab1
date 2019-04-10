@@ -1,3 +1,5 @@
+# Evin Killian, Tyler Campanile
+
 from student import Student
 
 def main():
@@ -13,6 +15,7 @@ def create_students(file):
     for student_line in students_file:
         student = student_line.split(",")
         student_obj = Student(student[0], student[1], student[2], student[3], student[4], student[5], student[6], student[7])
+        student_obj.t_first = student_obj.t_first.replace('\n', '')
         students.append(student_obj)
         
     return students
@@ -20,11 +23,11 @@ def create_students(file):
     
 def print_prompt():
     print("List of Commands:\n")
-    print("   S[tudent]: <lastname> [B[us]]")
-    print("   T[eacher]: <lastname>")
-    print("   B[us]: <number>")
-    print("   G[rade]: <number> [H[igh]|L[ow]]")
-    print("   A[verage]: <number>")
+    print("   S[tudent] <lastname> [B[us]]")
+    print("   T[eacher] <lastname>")
+    print("   B[us] <number>")
+    print("   G[rade] <number> [H[igh]|L[ow]]")
+    print("   A[verage] <number>")
     print("   I[nfo]")
     print("   Q[uit]\n")
     
@@ -43,7 +46,7 @@ def main_loop(students):
         elif command == "Q" or command == "Quit":
             break
         elif len(option) < 2 and command != "INVALID":
-            print("Command requires arguments\n")
+            print("Invalid or incomplete command\n")
         elif command == "S" or command == "Student":
             find_students(students, option)
         elif command == "T" or command == "Teacher":
@@ -130,14 +133,14 @@ def find_students(students, options):
             last_name = options[1]
             for student in students:
                 if last_name == student.last:
-                    print(student.last + ", " + student.first + ", " + student.bus)
+                    print("   " + student.last + ", " + student.first + ", " + student.bus)
 
     #R4: S[tudent]: <lastname>
     elif len(options) == 2:
         last_name = options[1]
         for student in students:
             if last_name == student.last:
-                print(student.last + ", " + student.first + ", " + student.grade + ", " + student.classroom + ", " +
+                print("   " + student.last + ", " + student.first + ", " + student.grade + ", " + student.classroom + ", " +
                           student.t_last + ", " + student.t_first)
     else:
         pass
@@ -150,22 +153,22 @@ def print_info(students):
         for student in students:
             if int(student.grade) == x:
                 count += 1
-        print("Grade " + str(x) + ": " + str(count) + " Students")
+        print("   Grade " + str(x) + ": " + str(count) + " Students")
         
 #R10 A[verage] <Number>
 def average_gpa(students, grade):
-   gpa_sum = 0
-   gpa_avg = 0
-   size = 0
+    gpa_sum = 0
+    gpa_avg = 0
+    size = 0
    
-   for student in students:
-      if student.grade == grade:
-         size += 1
-         gpa_sum += float(student.gpa)
+    for student in students:
+        if student.grade == grade:
+            size += 1
+            gpa_sum += float(student.gpa)
    
-   if size > 0:
-      gpa_avg = gpa_sum / size
-   print("   grade level: " + str(grade) + "\n   gpa average: " + str(gpa_avg))
+    if size > 0:
+        gpa_avg = gpa_sum / size
+    print("   grade level: " + str(grade) + "\n   gpa average: " + str(gpa_avg))
         
 if __name__ == "__main__":
     main()

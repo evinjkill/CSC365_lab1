@@ -1,0 +1,123 @@
+// TC-1
+// Tests Requirements R3, R4
+// Short form command name, existing student
+// Expected output: "   SARAO, DIEDRA, 2, 108, HAMER, GAVIN"
+
+S SARAO
+
+// TC-2
+// Tests Requirements R3, R4
+// Short form command name, non-existing student
+// Expected output: None
+
+S FALANTHROPO
+
+// TC-3
+// Tests Requirements R3, R5
+// Short form command name, existing student with bus route
+// Expected output: "   SARAO, DIEDRA, 52"
+
+S SARAO B
+
+// TC-4
+// Tests Requirements R3, R5
+// Short form command name, non-existing student with bus route
+// Expected output: None
+
+S MARFAH B
+
+// TC-5
+// Tests Requirements R3, R6
+// Short form command name, existing TEACHER
+// Expected output: "Students belonging to teacher:
+                       COOKUS,XUAN
+                       ELHADDAD,SHANTE
+                       SWEDLUND,SHARRI
+                       CIGANEK,MANIE
+                       COVINGTON,TOMAS
+                       EARLY,TORY
+                       LINHART,LELA"
+
+T FAFARD
+
+// TC-6
+// Tests Requirements R3, R6
+// Short form command name, non-existing teacher
+// Expected output: "Students belonging to teacher:"
+
+T AYERON
+
+// TC-7
+// Tests Requirements R3, R7
+// Short form command name, grade number
+// Expected output: "Students in grade level 1
+                       SAELEE,DANILO
+                       GARTH,JOHN"
+
+G 1
+
+// TC-8
+// Tests Requirements R3, R9
+// Short form command name, grade number with low option
+// Expected output: "Student with lowest gpa in grade level 1
+                       SAELEE,DANILO,2.85,FALKER,ADOLPH,54"
+
+G 1 L
+
+// TC-9
+// Tests Requirements R3, R9
+// Short form command name, grade number with high option
+// Expected output: "Student with highest gpa in grade level 1
+                        GARTH,JOHN,3.14,FALKER,ADOLPH,0"
+
+G 1 H
+
+// TC-10
+// Tests Requirements R3, R8
+// Short form command name, bus route
+// Expected output: "Students who take bus 0
+                       SCHOENECKER,PHUONG,6,109
+                       FINCHMAN,MATHILDA,6,111
+                       BRODERSEN,HYE,3,110
+                       HAVIR,BOBBIE,2,108
+                       MASSART,ELDON,4,105
+                       GARTH,JOHN,1,103
+                       CREMEANS,RANDOLPH,6,109
+                       KREESE,CARRIE,6,109"
+
+B 0
+
+// TC-11
+// Tests Requirements R3, R10
+// Short form command name, average GPA
+// Expected output: "   grade level: 1
+                        gpa average: 2.995"
+
+A 1
+
+// TC-12
+// Tests Requirements R3, R11
+// Short form command name, grade info
+// Expected output: "   Grade 0: 0 Students
+                        Grade 1: 2 Students
+                        Grade 2: 13 Students
+                        Grade 3: 9 Students
+                        Grade 4: 15 Students
+                        Grade 5: 0 Students
+                        Grade 6: 21 Students"
+
+I
+
+// TC-13
+// Tests Requirements E1
+// Invalid command
+// Expected output: "Invalid or incomplete command"
+
+HELP
+
+// TC-14
+// Tests Requirements R3, R12
+// Short form command name, quit
+// Expected output: None
+
+Q
