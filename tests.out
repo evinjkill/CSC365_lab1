@@ -1,0 +1,47 @@
+List of Commands:
+
+   S[tudent] <lastname> [B[us]]
+   T[eacher] <lastname>
+   B[us] <number>
+   G[rade] <number> [H[igh]|L[ow]]
+   A[verage] <number>
+   I[nfo]
+   Q[uit]
+
+Option:    SARAO, DIEDRA, 2, 108, HAMER, GAVIN
+Option: Option:    SARAO, DIEDRA, 52
+Option: Option: Students belonging to teacher: 
+   COOKUS,XUAN
+   ELHADDAD,SHANTE
+   SWEDLUND,SHARRI
+   CIGANEK,MANIE
+   COVINGTON,TOMAS
+   EARLY,TORY
+   LINHART,LELA
+Option: Students belonging to teacher: 
+Option: Students in grade level 1
+   SAELEE,DANILO
+   GARTH,JOHN
+Option: Student with lowest gpa in grade level 1
+   SAELEE,DANILO,2.85,FALKER,ADOLPH,54
+Option: Student with highest gpa in grade level 1
+   GARTH,JOHN,3.14,FALKER,ADOLPH,0
+Option: Students who take bus 0
+   SCHOENECKER,PHUONG,6,109
+   FINCHMAN,MATHILDA,6,111
+   BRODERSEN,HYE,3,110
+   HAVIR,BOBBIE,2,108
+   MASSART,ELDON,4,105
+   GARTH,JOHN,1,103
+   CREMEANS,RANDOLPH,6,109
+   KREESE,CARRIE,6,109
+Option:    Grade 0: 0 Students
+   Grade 1: 2 Students
+   Grade 2: 13 Students
+   Grade 3: 9 Students
+   Grade 4: 15 Students
+   Grade 5: 0 Students
+   Grade 6: 21 Students
+Option: Invalid or incomplete command
+
+Option: 
