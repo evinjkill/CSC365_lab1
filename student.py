@@ -1,7 +1,7 @@
 # Evin Killian, Tyler Campanile
 
 class Student:
-    def __init__(self, last, first, grade, classroom, bus, gpa, t_last, t_first):
+    def __init__(self, last, first, grade, classroom, bus, gpa, t_last="", t_first=""):
         self.last = last
         self.first = first
         self.grade = grade
