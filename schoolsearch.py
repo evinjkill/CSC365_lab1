@@ -1,14 +1,15 @@
 # Evin Killian, Tyler Campanile
 
 from student import Student
-
+from teacher import Teacher
 def main():
     file = open("list.txt", "r")
     students = create_students(file)
-    file = open("teachers.txt", "r")
-    teachers = create_teachers(file)
+    t_file = open("teachers.txt", "r")
+    teachers = create_teachers(t_file)
     students = assign_teachers(students, teachers)
-    
+    teachers = complete_teacher_list(students, teachers)
+    print(students[0].t_first + '\n\n\nHHH\n')
     print_prompt()
     main_loop(students, teachers)
     
@@ -31,18 +32,29 @@ def create_teachers(file):
     for teacher_line in teacher_file:
         teacher = teacher_line.split(",")
         teacher_obj = Teacher(teacher[0], teacher[1], teacher[2])
-        teacher_obj.classroom = student_obj.classroom.replace('\n', '')
-        teacher.append(teacher_obj)
+        teacher_obj.classroom = teacher_obj.classroom.replace('\n', '')
+        teachers.append(teacher_obj)
         
     return teachers
 
 def assign_teachers(students, teachers):
     for teacher in teachers:
-        for student in students:
-            if student.classroom = teacher.classroom:
+        for i, student in enumerate(students):
+            if int(student.classroom) == int(teacher.classroom):
                 student.t_first = teacher.first
                 student.t_last = teacher.last
+                students[i] = student
+                
+    
     return students
+    
+def complete_teacher_list(students, teachers):
+    for i, teacher in enumerate(teachers):
+        for student in students:
+            if int(student.classroom) == int(teacher.classroom):
+                teacher.grade = student.grade
+                teachers[i] = teacher
+    return teachers
     
     
 def print_prompt():
@@ -86,7 +98,7 @@ def main_loop(students, teachers):
                     high = True
                 elif option[2] == "L" or option[2] == "Low":
                     low = True
-            search_grade(students, option[1], low, high)
+            search_grade(students, teachers, option[1], low, high)
         elif command == "A" or command == "Average":
             average_gpa(students, option[1])
         elif command == "C" or command == "Classroom":
@@ -103,7 +115,7 @@ def search_teacher(students, lastname):
         if(student.t_last == lastname):
             print("   " + student.last + "," + student.first)
     
-def search_grade(students, grade, low, high):
+def search_grade(students, teachers, grade, low, high):
     s_first = ""
     s_last = ""
     min_gpa = 5.0
@@ -117,6 +129,10 @@ def search_grade(students, grade, low, high):
         for student in students:
             if student.grade == grade:
                 print("   " + student.last + "," + student.first)
+        print("Teachers whom teach grade level " + grade)
+        for teacher in teachers:
+            if teacher.grade == grade:
+                print("   " + teacher.last + "," + teacher.first)
         
     elif low == True:
         print("Student with lowest gpa in grade level " + grade)
