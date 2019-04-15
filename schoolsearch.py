@@ -3,10 +3,14 @@
 from student import Student
 
 def main():
-    file = open("students.txt", "r")
+    file = open("list.txt", "r")
     students = create_students(file)
+    file = open("teachers.txt", "r")
+    teachers = create_teachers(file)
+    students = assign_teachers(students, teachers)
+    
     print_prompt()
-    main_loop(students)
+    main_loop(students, teachers)
     
 
 def create_students(file):
@@ -14,10 +18,30 @@ def create_students(file):
     students = []
     for student_line in students_file:
         student = student_line.split(",")
-        student_obj = Student(student[0], student[1], student[2], student[3], student[4], student[5], student[6], student[7])
+        student_obj = Student(student[0], student[1], student[2], student[3], student[4], student[5])
         student_obj.t_first = student_obj.t_first.replace('\n', '')
         students.append(student_obj)
         
+    return students
+    
+    
+def create_teachers(file):
+    teacher_file = file.readlines()
+    teachers = []
+    for teacher_line in teacher_file:
+        teacher = teacher_line.split(",")
+        teacher_obj = Teacher(teacher[0], teacher[1], teacher[2])
+        teacher_obj.classroom = student_obj.classroom.replace('\n', '')
+        teacher.append(teacher_obj)
+        
+    return teachers
+
+def assign_teachers(students, teachers):
+    for teacher in teachers:
+        for student in students:
+            if student.classroom = teacher.classroom:
+                student.t_first = teacher.first
+                student.t_last = teacher.last
     return students
     
     
@@ -32,7 +56,7 @@ def print_prompt():
     print("   I[nfo]")
     print("   Q[uit]\n")
     
-def main_loop(students):
+def main_loop(students, teachers):
     
     while(True):
         option = input("Option: ")
