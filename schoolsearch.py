@@ -28,6 +28,7 @@ def print_prompt():
     print("   B[us] <number>")
     print("   G[rade] <number> [H[igh]|L[ow]]")
     print("   A[verage] <number>")
+    print("   C[lassroom] <number>")
     print("   I[nfo]")
     print("   Q[uit]\n")
     
@@ -64,6 +65,8 @@ def main_loop(students):
             search_grade(students, option[1], low, high)
         elif command == "A" or command == "Average":
             average_gpa(students, option[1])
+        elif command == "C" or command == "Classroom":
+            list_students_in_class(students, option[1])
         
         else:
             pass
@@ -169,6 +172,11 @@ def average_gpa(students, grade):
     if size > 0:
         gpa_avg = gpa_sum / size
     print("   grade level: " + str(grade) + "\n   gpa average: " + str(gpa_avg))
+    
+def list_students_in_class(students, classroom):
+    for student in students:
+       if int(classroom) == int(student.classroom):
+           print("   " + student.last + ", " + student.first)
         
 if __name__ == "__main__":
     main()
