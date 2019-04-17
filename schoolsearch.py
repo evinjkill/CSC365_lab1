@@ -64,11 +64,12 @@ def print_prompt():
     print("   G[rade] <number> [H[igh]|L[ow]]")
     print("   A[verage] <number>")
     print("   C[lassroom] <number>")
+    print("   An[alysis] <G[rade]|T[eacher]|B[us]>")
     print("   I[nfo]")
+    print("   E[nrollment]")
     print("   Q[uit]\n")
     
 def main_loop(students, teachers):
-    
     while(True):
         option = input("Option: ")
         option = option.split()
@@ -79,6 +80,8 @@ def main_loop(students, teachers):
         # Check commands with no arguments first 
         if command == "I" or command == "Info":
             print_info(students)
+        elif command == "E" or command == "Enrollment":
+            classroom_enrollment(students)
         elif command == "Q" or command == "Quit":
             break
         elif len(option) < 2 and command != "INVALID":
@@ -99,9 +102,13 @@ def main_loop(students, teachers):
                     low = True
             search_grade(students, teachers, option[1], low, high)
         elif command == "A" or command == "Average":
-            average_gpa(students, option[1])
+            gpa = average_gpa(students, option[1])
+            print("   grade level: " + str(option[1]) + "\n   gpa average: " + str(gpa))
         elif command == "C" or command == "Classroom":
             search_classroom(students, teachers, option[1])
+        elif command == "An" or command == "Analytics":
+            if option[1] == "G" or option[1] == "Grade":
+                analyze_grade(students)
         
         else:
             pass
@@ -204,14 +211,43 @@ def average_gpa(students, grade):
     size = 0
    
     for student in students:
-        if student.grade == grade:
+        if int(student.grade) == int(grade):
             size += 1
             gpa_sum += float(student.gpa)
    
     if size > 0:
         gpa_avg = gpa_sum / size
-    print("   grade level: " + str(grade) + "\n   gpa average: " + str(gpa_avg))
+    #print("   grade level: " + str(grade) + "\n   gpa average: " + str(gpa_avg))
+    return gpa_avg
     
+
+    
+def sort_classroom(student):
+    return int(student.classroom)
+    
+    
+def classroom_enrollment(students):
+    students.sort(key = sort_classroom)
+    print("Enrollment by classroom: ")
+    count = 0
+    classroom = -1
+    for student in students:
+        if int(student.classroom) != classroom:
+            if classroom != -1:
+                print("   Room: " + str(classroom) + ", Students: " + str(count))
+            classroom = int(student.classroom)
+            count = 1
+        else:
+            count += 1
+    print("   Room: " + str(classroom) + ", Students: " + str(count))
+        
+       
+def analyze_grade(students):
+    print("Average gpa by grade: ")
+    for i in range(1, 7):
+        gpa = average_gpa(students, i)
+        print("Grade: " + str(i) + ", Average gpa: " + str(gpa))
+    return
 
 #NR1 & NR2 C[lassroom] <Number>
 def search_classroom(students, teachers, classroom):
