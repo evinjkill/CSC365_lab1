@@ -9,7 +9,6 @@ def main():
     teachers = create_teachers(t_file)
     students = assign_teachers(students, teachers)
     teachers = complete_teacher_list(students, teachers)
-    print(students[0].t_first + '\n\n\nHHH\n')
     print_prompt()
     main_loop(students, teachers)
     
