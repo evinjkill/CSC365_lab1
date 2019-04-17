@@ -2,6 +2,7 @@
 
 from student import Student
 from teacher import Teacher
+
 def main():
     file = open("list.txt", "r")
     students = create_students(file)
@@ -32,8 +33,7 @@ def create_teachers(file):
         teacher = teacher_line.split(",")
         teacher_obj = Teacher(teacher[0], teacher[1], teacher[2])
         teacher_obj.classroom = teacher_obj.classroom.replace('\n', '')
-        teachers.append(teacher_obj)
-        
+        teachers.append(teacher_obj)        
     return teachers
 
 def assign_teachers(students, teachers):
@@ -101,7 +101,7 @@ def main_loop(students, teachers):
         elif command == "A" or command == "Average":
             average_gpa(students, option[1])
         elif command == "C" or command == "Classroom":
-            list_students_in_class(students, option[1])
+            search_classroom(students, teachers, option[1])
         
         else:
             pass
@@ -212,10 +212,18 @@ def average_gpa(students, grade):
         gpa_avg = gpa_sum / size
     print("   grade level: " + str(grade) + "\n   gpa average: " + str(gpa_avg))
     
-def list_students_in_class(students, classroom):
+
+#NR1 & NR2 C[lassroom] <Number>
+def search_classroom(students, teachers, classroom):
+    print("   STUDENTS")
     for student in students:
        if int(classroom) == int(student.classroom):
            print("   " + student.last + ", " + student.first)
+           
+    print("\n   TEACHERS")
+    for teacher in teachers:
+       if int(classroom) == int(teacher.classroom):
+          print("   " + teacher.last, ", " + teacher.first)
         
 if __name__ == "__main__":
     main()
