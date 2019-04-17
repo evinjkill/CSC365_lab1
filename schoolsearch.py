@@ -103,7 +103,6 @@ def main_loop(students, teachers):
             average_gpa(students, option[1])
         elif command == "C" or command == "Classroom":
             search_classroom(students, teachers, option[1])
-        
         else:
             pass
             #Invalid input
@@ -225,6 +224,22 @@ def search_classroom(students, teachers, classroom):
     for teacher in teachers:
        if int(classroom) == int(teacher.classroom):
           print("   " + teacher.last, ", " + teacher.first)
+          
+def teacher_average_gpa(students, teachers):
+    for teacher in teachers:
+        print(teacher.last + ", " + teacher.first + "  avg gpa: ", end="")
+        sum_gpa = 0
+        num_teaches = 0
+        for student in students:
+            if student.t_last == teacher.last and student.t_first == teacher.first:
+                num_teaches += 1
+                sum_gpa += float(student.gpa)
+        
+        if num_teaches > 0:
+            print(f'{sum_gpa/num_teaches:.2f}')
+        else:
+            print(0.00)
+          
         
 if __name__ == "__main__":
     main()
