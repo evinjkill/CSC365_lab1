@@ -2,7 +2,6 @@
 
 from student import Student
 from teacher import Teacher
-
 def main():
     file = open("list.txt", "r")
     students = create_students(file)
@@ -111,6 +110,8 @@ def main_loop(students, teachers):
                 analyze_grade(students)
             elif option[1] == "T" or option[1] == "Teacher":
                 analyze_teacher_avg_gpa(students, teachers)
+            elif option[1] == "B" or option[1] == "Bus":
+                bus_average_gpa(students)
         else:
             pass
             #Invalid input
@@ -249,6 +250,29 @@ def analyze_grade(students):
         gpa = average_gpa(students, i)
         print("Grade: " + str(i) + ", Average gpa: " + str(gpa))
     return
+
+def sort_bus(student):
+   return int(student.bus)
+
+
+def bus_average_gpa(students):
+    students.sort(key = sort_bus)
+    print("GPA by bus route: ")
+    count = 0
+    bus = -1
+    gpa_sum = 0
+    for student in students:
+        if int(student.bus) != bus:
+            if bus != -1:
+               print("Bus: " + str(bus) + ", Average gpa: " +
+                     str(gpa_sum/count))
+            bus = int(student.bus)
+            count = 1
+            gpa_sum = float(student.gpa)
+        else:
+            count += 1
+            gpa_sum += float(student.gpa)
+    print("Bus: " + str(bus) + ", Average gpa: " + str(gpa_sum/count))
 
 #NR1 & NR2 C[lassroom] <Number>
 def search_classroom(students, teachers, classroom):

@@ -48,11 +48,13 @@ T FAFARD
 T AYERON
 
 // TC-7
-// Tests Requirements R3, R7
+// Tests Requirements R3, R7, NR3
 // Short form command name, grade number
 // Expected output: "Students in grade level 1
                        SAELEE,DANILO
-                       GARTH,JOHN"
+                       GARTH,JOHN
+                     Teachers whom teach grade level 1
+                       FALKER, ADOLPH"
 
 G 1
 
@@ -121,3 +123,87 @@ HELP
 // Expected output: None
 
 Q
+
+// TC-15
+// Tests Requirements NR1, NR2
+// Short form for command name, classroom
+// Expected output: "   STUDENTS
+                        RACANELLO,  NOEL
+                        CORONADO,  DIMPLE
+                        BOYTER,  WAN
+                        KEMERER,  ROSETTA
+                        DEMARTINI,  DEWAYNE
+
+                        TEACHERS
+                        KERBS ,  BENITO"
+
+C
+
+// TC-16
+// Tests Requirements NR4
+// Short form for command name, enrollment
+// Expected output: "Enrollment by classroom:
+                       Room: 101, Students: 1
+                       Room: 102, Students: 5
+                       Room: 103, Students: 2
+                       Room: 104, Students: 2
+                       Room: 105, Students: 6
+                       Room: 106, Students: 2
+                       Room: 107, Students: 7
+                       Room: 108, Students: 11
+                       Room: 109, Students: 5
+                       Room: 110, Students: 2
+                       Room: 111, Students: 9
+                       Room: 112, Students: 8
+"
+
+E
+
+// TC-17
+// Tests Requirements for analysis
+// Short form for command name, Analyze grade level
+// Expected output: "Average gpa by grade:
+                      Grade: 1, Average gpa: 2.995
+                      Grade: 2, Average gpa: 2.946153846153846
+                      Grade: 3, Average gpa: 3.048888888888889
+                      Grade: 4, Average gpa: 2.951333333333334
+                      Grade: 5, Average gpa: 0
+                      Grade: 6, Average gpa: 2.9771428571428573
+"
+
+An G
+
+// TC-18
+// Tests Requirements for analysis
+// Short form for command name, Analyze teacher's average gpa
+// Expected output: "COOL,  REUBEN  avg gpa: 2.91
+                     KERBS,  BENITO  avg gpa: 2.98
+                     FALKER,  ADOLPH  avg gpa: 3.00
+                     STEIB,  GALE  avg gpa: 2.90
+                     HANTZ,  JED  avg gpa: 2.91
+                     BODZIONY,  LUZ  avg gpa: 3.09
+                     FAFARD,  ROCIO  avg gpa: 3.01
+                     HAMER,  GAVIN  avg gpa: 2.95
+                     GAMBREL,  JAE  avg gpa: 2.96
+                     ALPERT,  JONATHAN  avg gpa: 3.17
+                     NISTENDIRK,  NANCY  avg gpa: 2.96
+                     CHIONCHIO,  PERLA  avg gpa: 2.98
+"
+
+An T
+
+// TC-19
+// Tests Requirements for analysis
+// Short form for command name, Analyze bus route's average gpa
+// Expected output: "GPA by bus route:
+                     Bus: 0, Average gpa: 2.9525
+                     Bus: 51, Average gpa: 3.02
+                     Bus: 52, Average gpa: 2.885
+                     Bus: 53, Average gpa: 3.0555555555555554
+                     Bus: 54, Average gpa: 2.941666666666667
+                     Bus: 55, Average gpa: 3.0366666666666666
+                     Bus: 56, Average gpa: 2.9216666666666664
+
+"
+
+An B
