@@ -3,3 +3,8 @@ CSC 365 Lab 1, Part 1
 4/10/2019
 
 Run the program with "python3.6 schoolsearch.py"
+
+New commands that were added were C[lassroom], E[nrollment], and
+An[alysis]. These new commands list students and teachers by classroom,
+enrollment by grade, and finds gpa correlations by bus, teacher, and grade
+level.
